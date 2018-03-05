@@ -29,7 +29,7 @@ sub hook_config_file_section {
 }
 
 1;
-# ABSTRACT: Perinci::CmdLine::Lite to read entities from config
+# ABSTRACT: Perinci::CmdLine::Lite subclass to read entities from config
 
 =head1 SEE ALSO
 
