@@ -17,9 +17,9 @@ sub hook_config_file_section {
         my $entity = $1;
         my $xchg = $2;
         my $nick = $3 // 'default';
-        $r->{appdata}{cryp}{exchanges}{$xchg}{$nick} //= {};
+        $r->{_cryp}{exchanges}{$xchg}{$nick} //= {};
         for (keys %$section_content) {
-            $r->{appdata}{cryp}{exchanges}{$xchg}{$nick}{$_} =
+            $r->{_cryp}{exchanges}{$xchg}{$nick}{$_} =
                 $section_content->{$_};
         }
         return [204];
