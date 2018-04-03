@@ -13,7 +13,7 @@ use parent 'Perinci::CmdLine::Lite';
 sub hook_config_file_section {
     my ($self, $r, $section_name, $section_content) = @_;
 
-    if ($section_name =~ m!\Aexchange\s*/\s*(\S+)(?:\s*/\s*(.+))?\z!) {
+    if ($section_name =~ m!\Aexchange\s*/\s*([^/]+)(?:\s*/\s*(.+))?\z!) {
         my $xchg = $1;
         my $nick = $2 // 'default';
         $r->{_cryp}{exchanges}{$xchg}{$nick} //= {};
@@ -24,7 +24,7 @@ sub hook_config_file_section {
         return [204];
     }
 
-    if ($section_name =~ m!\Awallet\s*/\s*(\S+)(?:\s*/\s*(.+))?\z!) {
+    if ($section_name =~ m!\Awallet\s*/\s*([^/]+)(?:\s*/\s*(.+))?\z!) {
         my $coin = $1;
         my $nick = $2 // 'default';
         $r->{_cryp}{wallets}{$coin}{$nick} //= {};
@@ -35,7 +35,7 @@ sub hook_config_file_section {
         return [204];
     }
 
-    if ($section_name =~ m!\Amasternode\s*/\s*(\S+)(?:\s*/\s*(.+))?\z!) {
+    if ($section_name =~ m!\Amasternode\s*/\s*([^/]++)(?:\s*/\s*(.+))?\z!) {
         my $coin = $1;
         my $nick = $2 // 'default';
         $r->{_cryp}{masternodes}{$coin}{$nick} //= {};
