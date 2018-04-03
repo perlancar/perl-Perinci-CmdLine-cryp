@@ -13,13 +13,34 @@ use parent 'Perinci::CmdLine::Lite';
 sub hook_config_file_section {
     my ($self, $r, $section_name, $section_content) = @_;
 
-    if ($section_name =~ m!\A(exchange|wallet)\s*/\s*(\S+)(?:\s*/\s*(.+))?\z!) {
-        my $entity = $1;
-        my $xchg = $2;
-        my $nick = $3 // 'default';
+    if ($section_name =~ m!\Aexchange\s*/\s*(\S+)(?:\s*/\s*(.+))?\z!) {
+        my $xchg = $1;
+        my $nick = $2 // 'default';
         $r->{_cryp}{exchanges}{$xchg}{$nick} //= {};
         for (keys %$section_content) {
             $r->{_cryp}{exchanges}{$xchg}{$nick}{$_} =
+                $section_content->{$_};
+        }
+        return [204];
+    }
+
+    if ($section_name =~ m!\Awallet\s*/\s*(\S+)(?:\s*/\s*(.+))?\z!) {
+        my $coin = $1;
+        my $nick = $2 // 'default';
+        $r->{_cryp}{wallets}{$coin}{$nick} //= {};
+        for (keys %$section_content) {
+            $r->{_cryp}{wallets}{$coin}{$nick}{$_} =
+                $section_content->{$_};
+        }
+        return [204];
+    }
+
+    if ($section_name =~ m!\Amasternode\s*/\s*(\S+)(?:\s*/\s*(.+))?\z!) {
+        my $coin = $1;
+        my $nick = $2 // 'default';
+        $r->{_cryp}{masternodes}{$coin}{$nick} //= {};
+        for (keys %$section_content) {
+            $r->{_cryp}{masternodes}{$coin}{$nick}{$_} =
                 $section_content->{$_};
         }
         return [204];
