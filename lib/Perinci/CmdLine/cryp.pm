@@ -46,6 +46,16 @@ sub hook_config_file_section {
         return [204];
     }
 
+    if ($section_name =~ m!\Aarbit-strategy\s*/\s*([^/]++)\z!) {
+        my $strategy = $1;
+        $r->{_cryp}{arbit_strategy}{$strategy} //= {};
+        for (keys %$section_content) {
+            $r->{_cryp}{arbit_strategy}{$strategy}{$_} =
+                $section_content->{$_};
+        }
+        return [204];
+    }
+
     [200];
 }
 
