@@ -1,31 +1,31 @@
-0.006   2018-06-05 (PERLANCAR)
+0.006   2018-06-05  Released-By: PERLANCAR
 
 	- [Incompatible change] Change _cryp key arbit_strategy to
 	  arbit_strategies to be more consistent with the other keys.
 
 
-0.005   2018-05-05 (PERLANCAR)
+0.005   2018-05-05  Released-By: PERLANCAR
 
 	- Recognize arbit-strategy/* config sections.
 
 
-0.004   2018-04-03 (PERLANCAR)
+0.004   2018-04-03  Released-By: PERLANCAR
 
 	- Recognize wallet/*, masternode/* config sections.
 
 
-0.003   2018-03-06 (PERLANCAR)
+0.003   2018-03-06  Released-By: PERLANCAR
 
 	- No functional changes.
 
 	- Fix Abstract.
 
 
-0.002   2018-03-05 (PERLANCAR)
+0.002   2018-03-05  Released-By: PERLANCAR
 
 	- Incompatible change: simplify storage location.
 
 
-0.001   2018-03-05 (PERLANCAR)
+0.001   2018-03-05  Released-By: PERLANCAR
 
         - First release.
